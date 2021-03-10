@@ -11,7 +11,7 @@ Format `/etc/fstab` files.
 ## Example use
 
 * Run `fstabfmt /etc/fstab` to see the formatted output. No changes are made to the file.
-* Run `fstabfmt -i /etc/fstab` to make changes to `/etc/fstab`. Make sure to have a backup.
+* Run `fstabfmt -i /etc/fstab` to make changes to `/etc/fstab`. Always have a backup, just in case.
 
 ## Example output
 
