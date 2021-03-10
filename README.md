@@ -17,7 +17,7 @@ Format `/etc/fstab` files.
 
 Before:
 
-```
+```sh
 # Static information about the filesystems.
 # See fstab(5) for details.
 #
@@ -31,7 +31,7 @@ UUID=1815-DD5D      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,cod
 
 After:
 
-```
+```sh
 # Static information about the filesystems.
 # See fstab(5) for details.
 #
