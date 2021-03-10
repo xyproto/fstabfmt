@@ -1,8 +1,8 @@
 # fstabfmt
 
-![Build](https://github.com/xyproto/fstabfmt/workflows/Build/badge.svg) [![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/fstabfmt)](https://goreportcard.com/report/github.com/xyproto/fstabfmt) [![License](https://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://raw.githubusercontent.com/xyproto/fstabfmt/main/LICENSE)
+<img src="img/fstabfmt.svg" alt="logo" width="320px" height="320px">
 
-![logo](img/fstabfmt.svg)
+![Build](https://github.com/xyproto/fstabfmt/workflows/Build/badge.svg) [![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/fstabfmt)](https://goreportcard.com/report/github.com/xyproto/fstabfmt) [![License](https://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://raw.githubusercontent.com/xyproto/fstabfmt/main/LICENSE)
 
 Format `/etc/fstab` files.
 
