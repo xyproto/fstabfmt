@@ -10,25 +10,25 @@ import (
 const versionString = "fstabfmt 1.0.0"
 
 func usage() {
-	fmt.Println(versionString)
-	fmt.Println()
-	fmt.Println("Usage: fstabfmt [-i FILE]")
-	fmt.Println()
-	fmt.Println("fstabfmt formats /etc/fstab files.")
-	fmt.Println("It can either read from stdin and print to stdout")
-	fmt.Println("or modify the given file if the -i flag is used.")
-	fmt.Println()
-	fmt.Println("-h, --help       Display this help")
-	fmt.Println("-v, --version    Display the current version")
-	fmt.Println("-i FILE          Supply a file that will be modified")
-	fmt.Println()
+	fmt.Println(versionString + `
+Usage: fstabfmt [-i FILE]
+
+fstabfmt formats /etc/fstab files.
+It can either read from stdin and print to stdout
+or modify the given file if the -i flag is used.
+
+-h, --help       Display this help
+-v, --version    Display the current version
+-i FILE          Supply a file that will be modified
+
+`)
 }
 
 func format(data []byte, spaces int) []byte {
 	var (
 		buf       bytes.Buffer
 		nl        = []byte{'\n'}
-		longest   = make(map[int]int, 0) // The longest length of a field, for each field index
+		longest   = make(map[int]int) // The longest length of a field, for each field index
 		byteLines = bytes.Split(data, nl)
 	)
 
@@ -75,7 +75,6 @@ func format(data []byte, spaces int) []byte {
 			buf.Write(nl)
 		}
 	}
-
 	return buf.Bytes()
 }
 
@@ -98,10 +97,10 @@ func main() {
 		switch os.Args[1] {
 		case "-v", "--version":
 			fmt.Println(versionString)
-			os.Exit(0)
+			return
 		case "-h", "--help":
 			usage()
-			os.Exit(0)
+			return
 		default:
 			filename = os.Args[1]
 		}
