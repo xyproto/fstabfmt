@@ -2,10 +2,10 @@ package main
 
 import (
 	"bytes"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
-	"strconv"
 )
 
 const versionString = "fstabfmt 1.0.0"
@@ -18,10 +18,10 @@ fstabfmt formats /etc/fstab files.
 It can either read from stdin and print to stdout
 or modify the given file if the -i flag is used.
 
--h, --help        Display this help
--v, --version     Display the current version
--s, --spaces NUM  Specify the number of spaces used between fields 
--i FILE           Supply a file that will be modified
+-h, --help         Display this help
+-v, --version      Display the current version
+-s, --spaces NUM   Specify the number of spaces used between fields 
+-i FILE            Supply a file that will be modified
 
 `)
 }
@@ -82,40 +82,30 @@ func format(data []byte, spaces int) []byte {
 
 func main() {
 	var (
-		data     []byte
-		err      error
-		filename = "-"
-		modify   bool
-		spaces   = 2
+		data        []byte
+		err         error
+		filename    = "-"
+		modify      bool
+		showVersion bool
+		spaces      = 2
 	)
 
-	skipNextArg := false
-	for i := range os.Args {
-		if skipNextArg {
-			skipNextArg = false
-			continue
-		}
-		switch os.Args[i] {
-		case "-v", "--version":
-			fmt.Println(versionString)
-			return
-		case "-h", "--help":
-			usage()
-			return
-		case "-i":
-			filename = os.Args[i+1]
-			modify = true
-			skipNextArg = true
-		case "-s", "--spaces":
-			spaces, err = strconv.Atoi(os.Args[i+1])
-			if err != nil {
-				fmt.Fprintln(os.Stderr, "error: invalid number of spaces")
-				os.Exit(1)
-			}
-			skipNextArg = true
-		default:
-			filename = os.Args[i]
-		}
+	flag.IntVar(&spaces, "s", 2, "")
+	flag.IntVar(&spaces, "spaces", 2, "")
+	flag.BoolVar(&showVersion, "v", false, "")
+	flag.BoolVar(&showVersion, "version", false, "")
+	flag.BoolVar(&modify, "i", false, "")
+	flag.Usage = usage
+
+	flag.Parse()
+
+	if showVersion {
+		fmt.Println(versionString)
+		os.Exit(0)
+	}
+
+	if flag.Arg(0) != "" {
+		filename = flag.Arg(0)
 	}
 
 	if filename == "-" {
