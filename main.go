@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strconv"
 )
 
 const versionString = "fstabfmt 1.0.0"
@@ -17,9 +18,10 @@ fstabfmt formats /etc/fstab files.
 It can either read from stdin and print to stdout
 or modify the given file if the -i flag is used.
 
--h, --help       Display this help
--v, --version    Display the current version
--i FILE          Supply a file that will be modified
+-h, --help        Display this help
+-v, --version     Display the current version
+-s, --spaces NUM  Specify the number of spaces used between fields 
+-i FILE           Supply a file that will be modified
 
 `)
 }
@@ -84,25 +86,35 @@ func main() {
 		err      error
 		filename = "-"
 		modify   bool
+		spaces   = 2
 	)
-	if len(os.Args) > 2 {
-		if os.Args[1] == "-i" {
-			filename = os.Args[2]
-			modify = true
-		} else {
-			usage()
-			os.Exit(1)
+
+	skipNextArg := false
+	for i := range os.Args {
+		if skipNextArg {
+			skipNextArg = false
+			continue
 		}
-	} else if len(os.Args) > 1 {
-		switch os.Args[1] {
+		switch os.Args[i] {
 		case "-v", "--version":
 			fmt.Println(versionString)
 			return
 		case "-h", "--help":
 			usage()
 			return
+		case "-i":
+			filename = os.Args[i+1]
+			modify = true
+			skipNextArg = true
+		case "-s", "--spaces":
+			spaces, err = strconv.Atoi(os.Args[i+1])
+			if err != nil {
+				fmt.Fprintln(os.Stderr, "error: invalid number of spaces")
+				os.Exit(1)
+			}
+			skipNextArg = true
 		default:
-			filename = os.Args[1]
+			filename = os.Args[i]
 		}
 	}
 
@@ -115,7 +127,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	formatted := format(data, 2) // Separate fields with 2 spaces
+	formatted := format(data, spaces)
 	if !modify || filename == "-" {
 		fmt.Print(string(formatted))
 	} else {
