@@ -87,7 +87,7 @@ func main() {
 		filename    = "-"
 		modify      bool
 		showVersion bool
-		spaces      = 2
+		spaces      int
 	)
 
 	flag.IntVar(&spaces, "s", 2, "")
