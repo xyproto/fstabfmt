@@ -7,12 +7,13 @@ Format `/etc/fstab` files.
 ## Features and limitations
 
 * Can format `/etc/fstab` files.
-* Will use 2 spaces between all fields, if they are of equal length.
+* Will use 2 spaces between all fields by default, if they are of equal length.
 * The shorter fields are padded with spaces.
 
 ## Example use
 
 * Run `fstabfmt /etc/fstab` to see the formatted output. No changes are made to the file.
+* Run `fstabfmt -s 8 /etc/fstab` to see the formatted output with 8 spaces between fields. Again, no changes are made to the file.
 * Run `fstabfmt -i /etc/fstab` to make changes to `/etc/fstab`. Always keep a backup, just in case.
 
 ## Example output
