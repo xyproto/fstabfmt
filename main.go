@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -11,15 +12,16 @@ const versionString = "fstabfmt 1.0.0"
 
 func usage() {
 	fmt.Println(versionString + `
-Usage: fstabfmt [-i FILE]
+Usage: fstabfmt [-i] [-s NUM] FILE
 
 fstabfmt formats /etc/fstab files.
 It can either read from stdin and print to stdout
 or modify the given file if the -i flag is used.
 
--h, --help       Display this help
--v, --version    Display the current version
--i FILE          Supply a file that will be modified
+-h, --help         Display this help
+-v, --version      Display the current version
+-s, --spaces NUM   Specify the number of spaces used between fields 
+-i                 If provided will save the changes to the file
 
 `)
 }
@@ -80,30 +82,30 @@ func format(data []byte, spaces int) []byte {
 
 func main() {
 	var (
-		data     []byte
-		err      error
-		filename = "-"
-		modify   bool
+		data        []byte
+		err         error
+		filename    = "-"
+		modify      bool
+		showVersion bool
+		spaces      int
 	)
-	if len(os.Args) > 2 {
-		if os.Args[1] == "-i" {
-			filename = os.Args[2]
-			modify = true
-		} else {
-			usage()
-			os.Exit(1)
-		}
-	} else if len(os.Args) > 1 {
-		switch os.Args[1] {
-		case "-v", "--version":
-			fmt.Println(versionString)
-			return
-		case "-h", "--help":
-			usage()
-			return
-		default:
-			filename = os.Args[1]
-		}
+
+	flag.IntVar(&spaces, "s", 2, "")
+	flag.IntVar(&spaces, "spaces", 2, "")
+	flag.BoolVar(&showVersion, "v", false, "")
+	flag.BoolVar(&showVersion, "version", false, "")
+	flag.BoolVar(&modify, "i", false, "")
+	flag.Usage = usage
+
+	flag.Parse()
+
+	if showVersion {
+		fmt.Println(versionString)
+		os.Exit(0)
+	}
+
+	if flag.Arg(0) != "" {
+		filename = flag.Arg(0)
 	}
 
 	if filename == "-" {
@@ -115,7 +117,7 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	formatted := format(data, 2) // Separate fields with 2 spaces
+	formatted := format(data, spaces)
 	if !modify || filename == "-" {
 		fmt.Print(string(formatted))
 	} else {
