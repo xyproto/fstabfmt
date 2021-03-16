@@ -8,8 +8,8 @@ Format `/etc/fstab` files.
 
 * Can format `/etc/fstab` files.
 * Will use 2 spaces between all fields, if they are of equal length.
-* Other padding lengths than 2 can be supplied with the `-s` flag.
 * The shorter fields are padded with spaces.
+* Other padding lengths than 2 can be supplied with the `-s` flag.
 
 ## Example use
 
