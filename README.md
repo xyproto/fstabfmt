@@ -7,13 +7,14 @@ Format `/etc/fstab` files.
 ## Features and limitations
 
 * Can format `/etc/fstab` files.
-* Will use 2 spaces between all fields by default, if they are of equal length.
+* Will use 2 spaces between all fields, if they are of equal length.
+* Other padding lengths than 2 can be supplied with the `-s` flag.
 * The shorter fields are padded with spaces.
 
 ## Example use
 
 * Run `fstabfmt /etc/fstab` to see the formatted output. No changes are made to the file.
-* Run `fstabfmt -s 8 /etc/fstab` to see the formatted output with 8 spaces between fields. Again, no changes are made to the file.
+* Run `fstabfmt -s 8 /etc/fstab` to see the formatted output with 8 spaces between fields. No changes are made to the file.
 * Run `fstabfmt -i /etc/fstab` to make changes to `/etc/fstab`. Always keep a backup, just in case.
 
 ## Example output
@@ -47,6 +48,6 @@ UUID=1815-DD5D                             /boot  vfat  rw,relatime,fmask=0022,d
 
 ## General info
 
-* Version: 1.0.0
+* Version: 1.1.0
 * License: BSD-3
 * Author: Alexander F. Rødseth &lt;xyproto@archlinux.org&gt;
