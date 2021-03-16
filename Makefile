@@ -1,4 +1,4 @@
-.PHONY: clean install
+.PHONY: clean fstabfmt install
 
 PREFIX ?= /usr
 MANDIR ?= $(PREFIX)/share/man/man1
