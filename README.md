@@ -4,6 +4,8 @@
 
 Format `/etc/fstab` files.
 
+[![Packaging status](https://repology.org/badge/vertical-allrepos/fstabfmt.svg)](https://repology.org/project/fstabfmt/versions)
+
 ## Features and limitations
 
 * Can format `/etc/fstab` files.
