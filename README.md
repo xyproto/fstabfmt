@@ -17,7 +17,7 @@ Format `/etc/fstab` files.
 
 * Run `fstabfmt /etc/fstab` to see the formatted output. No changes are made to the file.
 * Run `fstabfmt -s 8 /etc/fstab` to see the formatted output with 8 spaces between fields. No changes are made to the file.
-* Run `fstabfmt -i /etc/fstab` to make changes to `/etc/fstab`. Always keep a backup, just in case.
+* Run `fstabfmt -i /etc/fstab` to make changes to `/etc/fstab`.
 
 ## Example output
 
