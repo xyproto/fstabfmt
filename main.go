@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-const versionString = "fstabfmt 1.1.0"
+const versionString = "fstabfmt 1.2.0"
 
 func usage() {
 	fmt.Println(versionString + `
