@@ -1,3 +1,9 @@
+*.bak
+*.log
+*.o
+*.swp
+*.tmp
 fstab
+fstab.txt
 fstabfmt
 include.txt
