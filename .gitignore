@@ -2,6 +2,7 @@
 *.log
 *.o
 *.swp
+*.tar.gz
 *.tmp
 fstab
 fstab.txt
