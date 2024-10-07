@@ -10,7 +10,7 @@ import (
 const versionString = "fstabfmt 1.2.0"
 
 func usage() {
-	fmt.Println(versionString + `
+	fmt.Print(versionString + `
 Usage: fstabfmt [-i] [-s NUM] [FILE]
 
 fstabfmt formats /etc/fstab files.
@@ -21,6 +21,7 @@ or modify the given file if the -i flag is used.
 -i                 Modify the given file
 -s, --spaces NUM   Specify the number of spaces used between fields
 -v, --version      Display the current version
+
 
 `)
 }
