@@ -4,8 +4,6 @@ Format `/etc/fstab` files.
 
 ![Build](https://github.com/xyproto/fstabfmt/workflows/Build/badge.svg) [![Go Report Card](https://goreportcard.com/badge/github.com/xyproto/fstabfmt)](https://goreportcard.com/report/github.com/xyproto/fstabfmt) [![License](https://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://raw.githubusercontent.com/xyproto/fstabfmt/main/LICENSE)
 
-[![Packaging status](https://repology.org/badge/vertical-allrepos/fstabfmt.svg)](https://repology.org/project/fstabfmt/versions)
-
 ## Features and limitations
 
 * Can format `/etc/fstab` files.
@@ -55,3 +53,5 @@ UUID=1815-DD5D                             /boot  vfat  rw,relatime,fmask=0022,d
 * Version: 1.2.0
 * License: BSD-3
 * Author: Alexander F. Rødseth &lt;xyproto@archlinux.org&gt;
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/fstabfmt.svg)](https://repology.org/project/fstabfmt/versions)
