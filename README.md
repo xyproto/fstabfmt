@@ -1,4 +1,4 @@
-<img alt="FSTABFMT logo" src="img/fstabfmt.png" width="10%">
+<img alt="FSTABFMT logo" src="img/fstabfmt.png" width="30%">
 
 Format `/etc/fstab` files.
 
