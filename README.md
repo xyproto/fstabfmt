@@ -54,4 +54,6 @@ UUID=1815-DD5D                             /boot  vfat  rw,relatime,fmask=0022,d
 * License: BSD-3
 * Author: Alexander F. Rødseth &lt;xyproto@archlinux.org&gt;
 
+<!--
 [![Packaging status](https://repology.org/badge/vertical-allrepos/fstabfmt.svg)](https://repology.org/project/fstabfmt/versions)
+-->
