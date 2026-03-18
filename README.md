@@ -7,7 +7,7 @@
 
 Take a stab at formatting `/etc/fstab` files with `fstabfmt`!
 
-<sup><sub>(Yes, yes, I know that it stands for "file system table format". 🙂)</sub></sup>
+<sup><sub>(Yes, yes, I know that it stands for "file system table". 🙂)</sub></sup>
 
 ## Features and limitations
 
