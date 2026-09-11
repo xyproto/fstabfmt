@@ -1,5 +1,4 @@
-<img alt="fstabfmt logo" src="img/fstabfmt.png" width="35%">
-
+<img alt="fstabfmt logo" src="img/fstabfmt.png" width="50%">
 
 [![Build](https://github.com/xyproto/fstabfmt/actions/workflows/test.yml/badge.svg)](https://github.com/xyproto/fstabfmt/actions/workflows/test.yml)
 [![License](https://img.shields.io/badge/license-BSD-green.svg?style=flat)](https://raw.githubusercontent.com/xyproto/fstabfmt/main/LICENSE)
